@@ -25,12 +25,23 @@ const images = [
   }
 ];
 
-const gallery = document.querySelector('.gallery');
+const ulElement = document.querySelector('.gallery')
+// console.log(ulElement)
 
-const imagesMarkup = images.map(({ url, alt }) => `
-  <li>
-    <img src="${url}" alt="${alt}">
-  </li>
-`).join('');
+function createImagesMarkup(images) {
+  return images
+    .map(
+      (image) => `<li>
+      <img src="${image.url}" alt="${image.alt}"/>
+    </li>`
+    )
+    .join("");
+}
 
-gallery.insertAdjacentHTML('beforeend', imagesMarkup);
+const imagesMarkup = createImagesMarkup(images);
+// console.log(imagesMarkup)
+
+ulElement.insertAdjacentHTML("beforeend", imagesMarkup);
+// Ти можеш створити й додати HTML - елементи, використовуючи
+// document.createElement() і elem.append() або шаблонні рядки і
+// elem.insertAdjacentHTML()
